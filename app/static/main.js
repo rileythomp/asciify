@@ -1,14 +1,6 @@
-function uploadImage(input) {
+function displayAsciiArt(file) {
 	asciiart = document.getElementById('asciiart');
-	asciiart.style.fontFamily = 'Courier';
-    let file = input.files[0];
-    if (file == undefined || file == null) {
-		asciiart.style.fontSize = '1em';
-		asciiart.style.color = 'Black';
-		asciiart.style.backgroundColor = 'White';
-        asciiart.innerText = 'File not found';
-    }
-    const formData = new FormData();
+	const formData = new FormData();
     formData.append('image', file);
     fetch('/asciiart', {
         method: 'POST',
@@ -28,4 +20,28 @@ function uploadImage(input) {
 		}
 		asciiart.innerText = text;
 	})
+}
+
+function uploadImage(input) {
+	asciiart = document.getElementById('asciiart');
+	asciiart.style.fontFamily = 'Courier';
+    let file = input.files[0];
+    if (file == undefined || file == null) {
+		asciiart.style.fontSize = '1em';
+		asciiart.style.color = 'Black';
+		asciiart.style.backgroundColor = 'White';
+        asciiart.innerText = 'File not found';
+		return
+    }
+	displayAsciiArt(file);
+}
+
+async function useDefaultImage(select) {
+	asciiart = document.getElementById('asciiart');
+	asciiart.style.fontFamily = 'Courier';
+	const imgPath = select.value
+	const response = await fetch(imgPath);
+	const blob = await response.blob();
+	let file = new File([blob], 'image.jpg', {type: blob.type});
+    displayAsciiArt(file);
 }
