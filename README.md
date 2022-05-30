@@ -39,7 +39,7 @@ Then open up a new terminal tab and run:
 
 `$ watch -n 0.1 cat asciiart.txt`
 
-to see the webcam video as ASCII art in real time.
+to see the webcam video as ASCII art in real time. Zoom out of the terminal tab until the image is clear.
 
 ---
 
