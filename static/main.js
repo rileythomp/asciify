@@ -10,7 +10,7 @@ function uploadImage(input) {
     }
     const formData = new FormData();
     formData.append('image', file);
-    fetch('/asciiart', {
+    fetch('http://localhost:5000/asciiart', {
         method: 'POST',
         body: formData
 	})

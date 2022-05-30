@@ -1,7 +1,9 @@
 import flask
+from flask_cors import CORS
 from imgtoascii import ImgFileToAscii
 
 app = flask.Flask(__name__, static_url_path='/static')
+CORS(app)
 app.config['DEBUG'] = True
 
 @app.route('/', methods=['GET'])
