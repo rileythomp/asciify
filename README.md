@@ -45,9 +45,9 @@ to see the webcam video as ASCII art in real time. Zoom out of the terminal tab 
 
 ### Picture
 
-Convert pictures to colored ASCII art.
+Convert pictures to coloured ASCII art.
 
-|     |     |     |
+| Original | Coloured ASCII | Black & White ASCII |
 | --- | --- | --- |
 | ![monalisa](imgs/monalisa.png) | ![asciimonalisa](imgs/asciimonalisa.png) | ![bwmonalisa](imgs/bwmonalisa.png) |
 
@@ -58,4 +58,4 @@ $ pip3 install -r requirements.txt
 $ python3 picture.py
 ``` 
 
-This will print out the colored ASCII art. Zoom out of the terminal tab until the image is clear.
+This will print out the coloured ASCII art. Zoom out of the terminal tab until the image is clear.
