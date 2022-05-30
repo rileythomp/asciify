@@ -10,7 +10,7 @@ function uploadImage(input) {
     }
     const formData = new FormData();
     formData.append('image', file);
-    fetch('https://asciiart.herokuapp.com/asciiart', {
+    fetch('/asciiart', {
         method: 'POST',
         body: formData
 	})
