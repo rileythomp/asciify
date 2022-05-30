@@ -1,6 +1,6 @@
 # asciify
 
-Turn images and webcam video to ASCII art.
+Turn images and webcam video to ASCII art. Examples are in the `ascii/` folder.
 
 ### Interactive Site
 
@@ -58,4 +58,4 @@ $ pip3 install -r requirements.txt
 $ python3 picture.py
 ``` 
 
-This will print out the coloured ASCII art. Zoom out of the terminal tab until the image is clear.
+Then enter the image path. This will print out the coloured ASCII art. Zoom out of the terminal tab until the image is clear.
