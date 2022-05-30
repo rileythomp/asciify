@@ -29,7 +29,3 @@ def asciiart():
         mimetype='text/plain'
     )
     return response
-
-
-
-# app.run(debug=True, port=5000)
