@@ -1,5 +1,6 @@
 from PIL import Image
 import math
+import sys
 
 Chars = '.\'`^",:;Il!i><~+_-?][}{1)(|\\/tfjrxnuvczXYUJCLQ0OZmwqpdbkhao*#MW&8%B@$'
 CharsLen = len(Chars)
@@ -19,7 +20,11 @@ def brightnessToChar(brightness: float) -> str:
     return char
 
 def getAsciiDimensions(imgPath: str):
-    img = Image.open(imgPath)
+    try: 
+        img = Image.open(imgPath)
+    except FileNotFoundError:
+        print(f'Could not find image with path ./{imgPath}')
+        sys.exit(0)
     img_width = 100
     width_percent = (img_width/float(img.size[0]))
     img_height = int((float(img.size[1])*float(width_percent)))
@@ -27,7 +32,7 @@ def getAsciiDimensions(imgPath: str):
     width, height = img.size
     return img, width, height
 
-def ImgToAscii(imgPath) -> str:
+def ImgToAscii(imgPath: str, output: bool = False) -> str:
     img, width, height = getAsciiDimensions(imgPath)
     art = ''
     for y in range(height):
@@ -45,8 +50,8 @@ def ImgToAscii(imgPath) -> str:
             # brightness = math.sqrt( 0.299*r*r + 0.587*g*g + 0.114*b*b )
 
             char = brightnessToChar(brightness)
-            print(colored(r, g, b, char*2), end='')
+            if output: print(colored(r, g, b, char*2), end='')
             art += char*2
-        print()
+        if output: print()
         art += '\n';
     return art

@@ -2,13 +2,9 @@ import cv2 as cv
 from imgtoascii import ImgToAscii
 import os
 
-FrameName = 'frame.jpg'
-
 # run watch -n 0.1 cat asciiart.txt in a separate terminal to see output
-def strToFile(str: str, filename: str):
-    file = open(filename, 'w')
-    file.write(str)
-    file.close()
+
+FrameName = 'frame.jpg'
 
 cam = cv.VideoCapture(0)
 print('press q to stop webcam')
@@ -18,7 +14,9 @@ while (True):
         cv.imshow('Ascii Art', frame)
         cv.imwrite(FrameName, frame)
         asciiart = ImgToAscii(FrameName)
-        strToFile(asciiart, 'asciiart.txt')
+        file = open('asciiart.txt', 'w')
+        file.write(asciiart)
+        file.close()
         os.remove(FrameName)
         if cv.waitKey(1) & 0xFF == ord('q'):
             break
