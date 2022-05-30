@@ -1,5 +1,5 @@
 import cv2 as cv
-from imgtoascii import ImgToAscii
+from imgtoascii import ImgPathToAscii
 import os
 
 # run watch -n 0.1 cat asciiart.txt in a separate terminal to see output
@@ -13,7 +13,7 @@ while (True):
     if retval:
         cv.imshow('Ascii Art', frame)
         cv.imwrite(FrameName, frame)
-        asciiart = ImgToAscii(FrameName)
+        asciiart = ImgPathToAscii(FrameName)
         file = open('asciiart.txt', 'w')
         file.write(asciiart)
         file.close()

@@ -8,7 +8,6 @@ CharsLen = len(Chars)
 def colored(r, g, b, text):
     return "\033[38;2;{};{};{}m{} \033[38;2;255;255;255m".format(r, g, b, text)
 
-
 def brightnessToChar(brightness: float) -> str:
     scaled_brightness = brightness/256
     char_index = math.floor(scaled_brightness * CharsLen)
@@ -19,12 +18,15 @@ def brightnessToChar(brightness: float) -> str:
     char = Chars[char_index]
     return char
 
-def getAsciiDimensions(imgPath: str):
+def imgFromPath(imgPath: str) -> Image.Image:
     try: 
         img = Image.open(imgPath)
     except FileNotFoundError:
         print(f'Could not find image with path ./{imgPath}')
         sys.exit(0)
+    return img
+
+def getAsciiDimensions(img: Image.Image):
     img_width = 100
     width_percent = (img_width/float(img.size[0]))
     img_height = int((float(img.size[1])*float(width_percent)))
@@ -32,8 +34,14 @@ def getAsciiDimensions(imgPath: str):
     width, height = img.size
     return img, width, height
 
-def ImgToAscii(imgPath: str, output: bool = False) -> str:
-    img, width, height = getAsciiDimensions(imgPath)
+def ImgFileToAscii(img) -> str:
+    return ImageToAscii(Image.open(img))
+
+def ImgPathToAscii(imgPath: str, output: bool = False) -> str:
+    return ImageToAscii(imgFromPath(imgPath), output)
+
+def ImageToAscii(img: Image.Image, output: bool = False) -> str:
+    img, width, height = getAsciiDimensions(img)
     art = ''
     for y in range(height):
         for x in range(width):

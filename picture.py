@@ -1,7 +1,7 @@
-from imgtoascii import ImgToAscii
+from imgtoascii import ImgPathToAscii
 
 frameName = input("Image path: ")
-asciiart = ImgToAscii(frameName, True)
+asciiart = ImgPathToAscii(frameName, True)
 file = open('asciiart.txt', 'w')
 file.write(asciiart)
 file.close()
