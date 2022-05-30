@@ -10,12 +10,6 @@ def strToFile(str: str, filename: str):
     file.write(str)
     file.close()
 
-def outputAsciiArt(art: str, filename: str):
-    print(art)
-    strToFile(art, filename)
-
-
-
 cam = cv.VideoCapture(0)
 print('press q to stop webcam')
 while (True):
@@ -24,7 +18,7 @@ while (True):
         cv.imshow('Ascii Art', frame)
         cv.imwrite(FrameName, frame)
         asciiart = ImgToAscii(FrameName)
-        outputAsciiArt(asciiart, 'asciiart.txt')
+        strToFile(asciiart, 'asciiart.txt')
         os.remove(FrameName)
         if cv.waitKey(1) & 0xFF == ord('q'):
             break
